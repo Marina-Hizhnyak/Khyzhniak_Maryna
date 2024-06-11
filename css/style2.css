@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+/* Styles de base */
+body {
+  font-family: 'Roboto', sans-serif;
+  width: 100vw;
+}
+
+nav {
+  background-color: #dddcdc;
+  top: 0;
+  height: 60px;
+  position: sticky;
+  z-index: 9999;
+}
+
+
+/* Effet au survol des éléments du menu de navigation */
+.nav-menu li {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-menu li::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #9d9c9b;
+  /* Couleur de la ligne au survol */
+  transform: scaleX(0);
+  /* Ligne initialement invisible */
+  transition: transform 0.3s ease-in-out;
+  /* Animation de la transformation */
+}
+
+.nav-menu li:hover::after {
+  transform: scaleX(1);
+  /* Ligne apparaît et s'étend sur la largeur du lien au survol */
+}
+
+
+/* Styles pour les sections mise en avant */
+.featured {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 1em;
+}
+
+.featured h1,
+#news h2,
+#about h2,
+#location h2 {
+  padding: 1em;
+  font-size: 1.5em;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.featured-desc {
+  padding: 0.5em;
+  text-align: justify;
+}
+
+
+
+/* Styles pour le menu latéral */
+aside {
+  display: none;
+  /* Masquer aside par défaut sur les petits écrans */
+}
+
+
+
+/* Conteneur flex */
+.wrap-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+/* Styles pour le menu de navigation */
+.nav-menu {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  margin: 0 auto;
+  justify-content: space-around;
+}
+
+.nav-menu li {
+  margin: 10px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+/* Styles pour la section des nouvelles */
+#news {
+  padding: 1em;
+}
+
+.news-container article {
+  padding: 1em;
+  text-align: center;
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 0.5em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.news-titre,
+.date,
+.summary {
+  padding: 0.5em;
+}
+
+.about-description,
+.location-description {
+  padding: 1em;
+  text-align: justify;
+}
+
+
+
+/* Styles pour les écrans moyens */
+@media (min-width: 729px) {
+  .wrap-flex {
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    order: -1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    padding: 1em;
+  }
+
+  aside figure {
+    padding: 1em;
+  }
+
+  .news-container {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+
+
+/* Styles pour les grands écrans */
+@media (min-width: 990px) {
+  .wrap-flex {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .featured {
+    width: 66.6%;
+  }
+
+  aside {
+    width: 33.3%;
+    flex-direction: column;
+    order: 0;
+    position: relative;
+    top: 0px;
+    left: 0px;
+  }
+
+  .wrap-flex-about-location {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .news-container {
+    flex-direction: row;
+  }
+}
+
+
+
+/* Styles pour le pied de page */
+footer {
+  width: 100vw;
+  padding: 1em;
+  min-height: 50px;
+  text-align: center;
+  background-color: #dddcdc;
+}
+
+
+
+/* Animation d'un effet léger sur le texte "Latest news" */
+@keyframes gentleGlow {
+  0% {
+    text-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
+  }
+
+  50% {
+    text-shadow: 0 0 10px rgba(255, 140, 0, 0.8);
+  }
+
+  100% {
+    text-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
+  }
+}
+
+#news h2 {
+  animation: gentleGlow 2s infinite alternate;
+  /* Appliquer l'animation */
+}
+
+
+
+/* Styles généraux pour l'impression */
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    font-size: 8pt;
+  }
+     img, nav, footer {
+       display: none;
+     }
+}
